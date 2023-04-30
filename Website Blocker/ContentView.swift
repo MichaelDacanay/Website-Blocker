@@ -21,9 +21,9 @@ struct ContentView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Item at \(item.url!)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(item.url!)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -45,7 +45,7 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            newItem.url = "www.google.com"
 
             do {
                 try viewContext.save()
